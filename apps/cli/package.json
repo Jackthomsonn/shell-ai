@@ -9,13 +9,24 @@
   },
   "scripts": {
     "dev": "export URL='http://localhost:3000/api' && npx tsc && npm install -g . && shell-ai suggest 'run a docker image'",
-    "lint": "npx eslint --format json --output-file result.json"
+    "lint": "npx eslint --format json --output-file result.json",
+    "prepack": "unset URL",
+    "prepublish": "unset URL"
   },
   "files": [
     "bin"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Shell AI",
+    "Code completion",
+    "Code suggestions",
+    "Shell",
+    "AI",
+    "CLI tools",
+    "CLI",
+    "Open AI"
+  ],
+  "author": "Jack Thomson",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",

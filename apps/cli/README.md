@@ -1,15 +1,17 @@
 # Shell AI
 
-## Developer setup
+Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions for shell commands directly in your terminal
 
+## How to use
+
+### Install shell-ai globally
+
+```bash
+npm i shell-ai -g
 ```
-npm run dev
-```
 
----
+### How to run
 
-## How to deploy
-
-```
-npm publish
+```bash
+shell-ai suggest "How to run a docker image" --copy
 ```
