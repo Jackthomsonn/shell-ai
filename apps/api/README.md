@@ -2,7 +2,7 @@
 
 ## Developer setup
 
-```
+```bash
 vercel env pull
 vercel dev
 ```
@@ -13,7 +13,7 @@ vercel dev
 
 ## How to deploy
 
-```
+```bash
 vercel // Dev deploy
 
 OR
