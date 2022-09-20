@@ -1,0 +1,6 @@
+**/**/result.json
+node_modules
+.env
+.vercel
+.turbo
+bin/

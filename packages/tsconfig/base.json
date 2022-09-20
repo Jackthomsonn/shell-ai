@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "outDir": "bin",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
+  }
+}

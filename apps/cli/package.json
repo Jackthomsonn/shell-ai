@@ -1,0 +1,31 @@
+{
+  "name": "shell-ai",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "bin": {
+    "shell-ai": "./bin/index.js"
+  },
+  "scripts": {
+    "dev": "export URL='http://localhost:3000/api' && npx tsc && npm install -g . && shell-ai suggest 'run a docker image'",
+    "lint": "npx eslint --format json --output-file result.json"
+  },
+  "files": [
+    "bin"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "clipboardy": "^3.0.0",
+    "commander": "^9.4.0",
+    "node-fetch": "^3.2.10",
+    "openai": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "typescript": "^4.8.3"
+  }
+}
