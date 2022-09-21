@@ -1,6 +1,6 @@
 # Shell AI
 
-Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions for shell commands directly in your terminal
+Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions directly in your terminal
 
 ## How to use
 

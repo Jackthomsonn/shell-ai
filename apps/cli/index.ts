@@ -74,7 +74,7 @@ const handleCompletion = async (prompt: string, options: any) => {
   program
     .name("Shell AI")
     .description(
-      "Shell AI is a command line interface to help suggest ways to solve your problems in shell"
+      "Shell AI is a command line interface to help suggest ways to solve all your problems"
     )
     .version("0.0.1");
 

@@ -1,8 +1,8 @@
 {
   "name": "shell-ai",
   "type": "module",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions directly in your terminal",
   "main": "bin/index.js",
   "bin": {
     "shell-ai": "./bin/index.js"

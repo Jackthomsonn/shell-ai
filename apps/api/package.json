@@ -1,7 +1,7 @@
 {
   "name": "shell-ai-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Shell AI API is the backend for Shell AI",
   "main": "index.js",
   "scripts": {
     "get-env": "vercel env pull",
