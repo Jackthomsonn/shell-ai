@@ -4,4 +4,4 @@ node_modules
 .vercel
 .turbo
 bin/
-DS_Store
+.DS_Store

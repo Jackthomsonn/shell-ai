@@ -18,7 +18,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     const result = await openai.createCompletion({
       model: "text-davinci-002",
-      prompt: [`${prompt} ${prompt.includes("in shell") ? null : "in shell"}`],
+      prompt: [prompt],
       temperature: 0.7,
       max_tokens: 2048,
       top_p: 1,
