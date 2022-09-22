@@ -104,6 +104,8 @@ export const handleCompletion = async (prompt: string, options: any) => {
       await run(options, access_token, prompt);
     }
   } catch (error) {
-    console.log(chalk.bold.redBright("\You need to be logged in 🫣 - run shell-ai auth\n"));
+    console.log(
+      chalk.bold.redBright("You need to be logged in 🫣 - run shell-ai auth\n")
+    );
   }
 };

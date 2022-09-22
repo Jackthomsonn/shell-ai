@@ -8,7 +8,11 @@ const axios = Axios.default;
 export const handleAuth = async () => {
   prompt.message = "";
 
-  console.log(chalk.bold.blue("\nLogin to your Shell AI account! If you don't have an account, you can create one at https://shell.ai \n"));
+  console.log(
+    chalk.bold.blue(
+      "\nLogin to your Shell AI account! If you don't have an account, you can create one at https://shell.ai \n"
+    )
+  );
   prompt.start();
 
   const { email, password } = await prompt.get<{

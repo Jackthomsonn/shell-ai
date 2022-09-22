@@ -13,7 +13,7 @@ Terraform Provider for the [Auth0](https://auth0.com/) platform.
 _Note: This Provider was previously maintained under
 [alexkappa/terraform-provider-auth0](https://github.com/alexkappa/terraform-provider-auth0)._
 
--------------------------------------
+---
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ _Note: This Provider was previously maintained under
 - [Author](#author)
 - [License](#license)
 
--------------------------------------
+---
 
 ## Installation
 
