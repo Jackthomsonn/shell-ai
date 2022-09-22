@@ -8,7 +8,7 @@
     "shell-ai": "./bin/index.js"
   },
   "scripts": {
-    "dev": "export URL='http://localhost:3000/api' && npx tsc && npm install -g . && shell-ai suggest 'run a docker image'",
+    "dev": "export URL='http://localhost:3000/api/suggest' && npx tsc && npm install -g . && shell-ai suggest 'write a for loop'",
     "lint": "npx eslint --format json --output-file result.json",
     "prepack": "unset URL",
     "prepublish": "unset URL"
@@ -29,14 +29,20 @@
   "author": "Jack Thomson",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "clipboardy": "^3.0.0",
     "commander": "^9.4.0",
+    "jwt-decode": "^3.1.2",
     "node-fetch": "^3.2.10",
-    "openai": "^3.0.0"
+    "openai": "^3.0.0",
+    "prompt": "^1.3.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
+    "@types/prompt": "^1.1.3",
+    "@types/request": "^2.48.8",
     "typescript": "^4.8.3"
   }
 }
