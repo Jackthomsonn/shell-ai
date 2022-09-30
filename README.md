@@ -11,7 +11,7 @@ Shell AI helps you solve code problems right in your terminal! Simply ask Shell 
 
 ## Get started with Shell AI
 
-```
+```bash
 npm i shell-ai -g
 shell-ai auth // You must login first (create an account on https://shell-ai.io
 shell-ai suggest "How do I run a docker image and mount a volume"
