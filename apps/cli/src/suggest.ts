@@ -135,6 +135,5 @@ export const handleCompletion = async (prompt: string, options: any) => {
     }
   } catch (error: any) {
     console.log(chalk.bold.redBright(error.message));
-    throw error;
   }
 };

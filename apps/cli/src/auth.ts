@@ -158,14 +158,14 @@ export const signup = async () => {
     } as any,
   });
 
-  try {
-    const loaderInterval = setInterval(() => {
-      logUpdate(
-        frames[(i = ++i % frames.length)] +
-          chalk.bold.magenta(" Signing you up...")
-      );
-    }, interval);
+  const loaderInterval = setInterval(() => {
+    logUpdate(
+      frames[(i = ++i % frames.length)] +
+        chalk.bold.magenta(" Signing you up...")
+    );
+  }, interval);
 
+  try {
     await axios.request({
       url:
         process.env.SIGNUP_URL ??
@@ -188,6 +188,7 @@ export const signup = async () => {
       )
     );
   } catch (error) {
+    clearInterval(loaderInterval);
     console.log(chalk.bold.redBright("\nSignup failed 🫣\n"));
   }
 };
