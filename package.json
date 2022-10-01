@@ -1,5 +1,6 @@
 {
   "name": "shell-ai",
+  "version": "1.0.1",
   "workspaces": [
     "apps/*",
     "packages/*"

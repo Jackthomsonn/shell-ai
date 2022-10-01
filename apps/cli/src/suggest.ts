@@ -56,7 +56,7 @@ const run = async (options: any, access_token: string, prompt: string) => {
     if (result.status === 401 || result.status === 403) {
       console.log(
         chalk.bold.redBright(
-          "\nUnauthorized, please make sure you are logged in and have an active subscription 🤯\n"
+          "\nIt looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe\n"
         )
       );
       return;
@@ -92,20 +92,32 @@ export const handleCompletion = async (prompt: string, options: any) => {
       readFileSync(`${process.env.HOME}/.shellai`, "ascii")
     );
 
-    const decoded: { exp: number } = jwt(access_token);
+    const decoded: { exp: number; permissions: string[] } = jwt(access_token);
 
-    if (moment(decoded.exp).isAfter(moment())) {
+    if (moment(decoded.exp * 1000).isSameOrBefore(moment())) {
       const { access_token: new_access_token } = await handleRefreshAuth(
         refresh_token
       );
 
+      const decoded: { exp: number; permissions: string[] } = jwt(access_token);
+
+      if (!decoded.permissions.includes("shell:premium")) {
+        throw new Error(
+          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe"
+        );
+      }
+
       await run(options, new_access_token, prompt);
     } else {
+      if (!decoded.permissions.includes("shell:premium")) {
+        throw new Error(
+          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe"
+        );
+      }
+
       await run(options, access_token, prompt);
     }
-  } catch (error) {
-    console.log(
-      chalk.bold.redBright("You need to be logged in 🫣 - run shell-ai auth\n")
-    );
+  } catch (error: any) {
+    console.log(chalk.bold.redBright(error.message));
   }
 };

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { handleAuth } from "./auth.js";
+import open from "open";
+import { handleAuth, subscribe } from "./auth.js";
 import { handleCompletion } from "./suggest.js";
-
 (async () => {
   const program = new Command();
 
@@ -11,7 +11,7 @@ import { handleCompletion } from "./suggest.js";
     .description(
       "Shell AI is a command line interface to help suggest ways to solve all your problems"
     )
-    .version("0.0.1");
+    .version("1.0.1");
 
   program
     .command("suggest")
@@ -21,6 +21,17 @@ import { handleCompletion } from "./suggest.js";
     .action(handleCompletion);
 
   program.command("auth").description("Login to Shell AI").action(handleAuth);
+  program
+    .command("subscribe")
+    .description("Subscribe to Shell AI")
+    .action(subscribe);
+
+  program
+    .command("manage-subscription")
+    .description("Manage your subscription")
+    .action(async () => {
+      await open("https://billing.stripe.com/p/login/test_dR63fI3o7b7d39S7ss");
+    });
 
   program.parse();
 })();
