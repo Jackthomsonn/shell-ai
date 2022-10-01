@@ -3,15 +3,23 @@ import { Command } from "commander";
 import open from "open";
 import { handleAuth, subscribe } from "./auth.js";
 import { handleCompletion } from "./suggest.js";
+import fs from "fs";
+
 (async () => {
   const program = new Command();
+
+  // Check if files exists otherwise create it filesystem
+  if (!fs.existsSync(`${process.env.HOME}/.shellai`)) {
+    // Execute shell-ai auth command
+    await handleAuth();
+  }
 
   program
     .name("Shell AI")
     .description(
       "Shell AI is a command line interface to help suggest ways to solve all your problems"
     )
-    .version("1.1.2");
+    .version("1.2.0");
 
   program
     .command("suggest")

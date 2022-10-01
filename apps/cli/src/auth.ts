@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync } from "fs";
 import jwt_decode from "jwt-decode";
 import open from "open";
 import prompt from "prompt";
+import fs from 'fs';
 
 const jwt = jwt_decode.default;
 
@@ -44,10 +45,17 @@ export const handleAuth = async () => {
       refresh_token: response.data.refresh_token,
     };
 
-    writeFileSync(
-      `${process.env.HOME}/.shellai`,
-      JSON.stringify(toStore, null, 2)
-    );
+    if (!fs.existsSync(`${process.env.HOME}/.shellai/`)) {
+      writeFileSync(
+        `${process.env.HOME}/.shellai`,
+        JSON.stringify(toStore, null, 2)
+      );
+    } else {
+      writeFileSync(
+        `${process.env.HOME}/.shellai`,
+        JSON.stringify(toStore, null, 2)
+      );
+    }
 
     console.log(chalk.bold.greenBright("\nLogged in 🥳\n"));
   } catch (error) {
