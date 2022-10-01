@@ -16,6 +16,6 @@ Shell AI helps you solve code problems right in your terminal! Simply ask Shell 
 npm i shell-ai -g
 shell-ai login // You must login first (if you dont have an account, run shell-ai signup)
 shell-ai subscribe // Subscribe to a plan
-shell-ai login // Login again to refresh your scopes or wait for 1 minute
+shell-ai login // Login again to refresh your scopes
 shell-ai suggest "How do I run a docker image and mount a volume"
 ```
