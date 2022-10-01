@@ -42,7 +42,8 @@ const copyToClipboard = (choice: CreateCompletionResponseChoicesInner) => {
 const run = async (options: any, access_token: string, prompt: string) => {
   try {
     const result = await fetch(
-      process.env.SUGGEST_URL ?? ("https://shell-ai-api.vercel.app/api/suggest" as string),
+      process.env.SUGGEST_URL ??
+        ("https://shell-ai-api.vercel.app/api/suggest" as string),
       {
         method: "POST",
         headers: {
