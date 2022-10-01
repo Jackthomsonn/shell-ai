@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import jwt_decode from "jwt-decode";
+import jwt from "jwt-decode";
 
 const configuration = new Configuration({
   organization: process.env.ORG_ID,
@@ -11,6 +11,16 @@ const openai = new OpenAIApi(configuration);
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const prompt = req.body.prompt;
+  const token = req.headers.authorization as string;
+
+  const decoded: { exp: number; permissions: string[] } = jwt(
+    token.split(" ").pop() as string
+  );
+
+  console.log(decoded.permissions);
+
+  if (!decoded.permissions.includes("shell:premium"))
+    return res.status(403).send("Forbidden");
 
   try {
     console.debug(
