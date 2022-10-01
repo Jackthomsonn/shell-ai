@@ -13,7 +13,7 @@ const stripe = new Stripe(process.env.STRIPE_KEY as string, {
   apiVersion: "2022-08-01",
 });
 
-const roles = ["rol_lfVVCd6eHLdwTB0K"]; // Shell premium role
+const roles = ["rol_RHllXYZi72sktKTy"]; // Shell premium role
 
 export const config = {
   api: {

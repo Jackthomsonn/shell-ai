@@ -13,11 +13,29 @@ resource "auth0_client" "shell_ai" {
 }
 
 resource "auth0_resource_server" "shell_ai_api" {
-  name        = "The Shel AI API"
-  identifier  = "https://shell-ai-api.vercel.app"
-  signing_alg = "RS256"
+  name          = "The Shell AI API"
+  identifier    = "https://shell-ai-api.vercel.app"
+  signing_alg   = "RS256"
+  token_dialect = "access_token_authz"
 
+  enforce_policies                                = true
   allow_offline_access                            = true
-  token_lifetime                                  = 8600
+  token_lifetime                                  = 60
+  token_lifetime_for_web                          = 60
   skip_consent_for_verifiable_first_party_clients = true
+
+  scopes {
+    value       = "shell:premium"
+    description = "Has a premium account"
+  }
+}
+
+resource "auth0_role" "shell_premium" {
+  name        = "Shell Premium"
+  description = "Premium subscription"
+
+  permissions {
+    resource_server_identifier = auth0_resource_server.shell_ai_api.identifier
+    name                       = "shell:premium"
+  }
 }

@@ -5,3 +5,4 @@ node_modules
 .turbo
 bin/
 .DS_Store
+apps/infrastructure/.terraform/
