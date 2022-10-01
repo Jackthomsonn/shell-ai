@@ -149,10 +149,14 @@ export const signup = async () => {
   console.log(chalk.bold.blue("\nCreate your account below \n"));
   prompt.start();
 
-  const { email, password } = await prompt.get<{
-    email: string;
-    password: string;
-  }>(["email", "password"]);
+  const { email, password } = await prompt.get({
+    properties: {
+      email: {},
+      password: {
+        hidden: true,
+      },
+    } as any,
+  });
 
   try {
     const loaderInterval = setInterval(() => {

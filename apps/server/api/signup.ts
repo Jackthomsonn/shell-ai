@@ -20,7 +20,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     await auth0.createUser({
       email,
       password,
-      connection: 'Username-Password-Authentication'
+      connection: "Username-Password-Authentication",
     });
 
     res.status(200).json({ message: "User created" });

@@ -1,7 +1,7 @@
 {
   "name": "shell-ai",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions directly in your terminal",
   "main": "bin/index.js",
   "bin": {
@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "export CUSTOMER_PORTAL='https://billing.stripe.com/p/login/test_dR63fI3o7b7d39S7ss' SIGNUP_URL='http://localhost:3000/api/signup' SUGGEST_URL='http://localhost:3000/api/suggest' AUTH_URL='http://localhost:3000/api/auth' REFRESH_URL='http://localhost:3000/api/refresh' SUBSCRIBE_URL='http://localhost:3000/api/subscribe' && npx tsc && npm install -g . && shell-ai signup",
     "lint": "npx eslint --format json --output-file result.json",
-    "prepack": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc",
-    "prepublish": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc"
+    "prepack": "unset CUSTOMER_PORTAL SIGNUP_URL SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc",
+    "prepublish": "unset CUSTOMER_PORTAL SIGNUP_URL SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc"
   },
   "files": [
     "bin"
