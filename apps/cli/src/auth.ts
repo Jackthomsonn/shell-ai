@@ -26,7 +26,7 @@ export const handleAuth = async () => {
 
   try {
     const response = await axios.request({
-      url: "http://localhost:3000/api/auth",
+      url: process.env.AUTH_URL ?? ("https://shell-ai-api.vercel.app/api/auth" as string),
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,7 +56,7 @@ export const handleAuth = async () => {
 export const handleRefreshAuth = async (refresh_token: string) => {
   const response = await axios.request({
     method: "POST",
-    url: "http://localhost:3000/api/refresh",
+    url: process.env.REFRESH_URL ?? ("https://shell-ai-api.vercel.app/api/refresh" as string),
     headers: { "content-type": "application/json" },
     data: JSON.stringify({
       refresh_token: refresh_token,
@@ -85,7 +85,7 @@ export const subscribe = async () => {
 
   const response = await axios.request({
     method: "POST",
-    url: "http://localhost:3000/api/subscribe",
+    url: process.env.SUBSCRIBE_URL ?? ("https://shell-ai-api.vercel.app/api/subscribe" as string),
     headers: { "content-type": "application/json" },
     data: JSON.stringify({
       user_id: sub,

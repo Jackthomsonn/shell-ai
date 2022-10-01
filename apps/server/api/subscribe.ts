@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const paymentLink = await stripe.paymentLinks.create({
     line_items: [
       {
-        price: "price_1LnrX6LzoIyAumTjfO4ciyr3", // £5 /month silver plan
+        price: process.env.PREMIUM_STRIPE_PRICE as string,
         quantity: 1,
       },
     ],

@@ -10,27 +10,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  // const token = req?.headers?.authorization as string;
-
-  // const { sub }: { sub: string } = jwt_decode(token);
-
-  // if (!token) {
-  //   res.status(401).json({ error: "Unauthorized" });
-  //   return;
-  // }
-
-  // Perform a check i n the DB for the users id and check they have an active subscription
-  // if (sub !== "auth0|632cc6eadd582fd2b46b5f08") {
-  //   res.status(403).send({ error: "Forbidden" });
-  //   return;
-  // }
-
-  console.debug("Request started");
-
   const prompt = req.body.prompt;
 
   try {
-    console.debug("Starting completion request", { prompt });
+    console.debug(
+      "Starting completion request",
+      JSON.stringify({ prompt }, null, 2)
+    );
 
     const result = await openai.createCompletion({
       model: "text-davinci-002",
@@ -40,13 +26,23 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       top_p: 1,
     });
 
-    console.debug("Completion request successful", {
-      numberOfChoices: result.data.choices?.length,
-    });
+    console.debug(
+      "Completion request successful",
+      JSON.stringify(
+        {
+          numberOfChoices: result.data.choices?.length,
+        },
+        null,
+        2
+      )
+    );
 
     res.status(200).json(result.data.choices);
   } catch (error: any) {
-    console.debug("Completion request failed", { reason: error.message });
+    console.debug(
+      "Completion request failed",
+      JSON.stringify({ reason: error.message }, null, 2)
+    );
 
     res.status(500).json(JSON.stringify({ error }));
   }

@@ -11,7 +11,7 @@ import { handleCompletion } from "./suggest.js";
     .description(
       "Shell AI is a command line interface to help suggest ways to solve all your problems"
     )
-    .version("1.0.1");
+    .version("1.1.2");
 
   program
     .command("suggest")

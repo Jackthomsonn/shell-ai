@@ -1,10 +1,3 @@
-// --------------------------------------------------------------------------------
-
-// IMPORTANT: When the new version of the CLI is release we will need to support this API until everything has been updated!
-
-// We will still need to add protection to this for older versions of the CLI so no unauthorized users can access this API
-
-// --------------------------------------------------------------------------------
 import { Configuration, OpenAIApi } from "openai";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 

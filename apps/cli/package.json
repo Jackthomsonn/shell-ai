@@ -1,17 +1,17 @@
 {
   "name": "shell-ai",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.2",
   "description": "Shell AI is a simple CLI tool that utilizes Open AI to provide code suggestions directly in your terminal",
   "main": "bin/index.js",
   "bin": {
     "shell-ai": "./bin/index.js"
   },
   "scripts": {
-    "dev": "export URL='http://localhost:3000/api/suggest' && npx tsc && npm install -g . && shell-ai suggest 'write a for loop'",
+    "dev": "export SUGGEST_URL='http://localhost:3000/api/suggest' AUTH_URL='http://localhost:3000/api/auth' REFRESH_URL='http://localhost:3000/api/refresh' SUBSCRIBE_URL='http://localhost:3000/api/subscribe' && npx tsc && npm install -g . && shell-ai suggest 'write a for loop'",
     "lint": "npx eslint --format json --output-file result.json",
-    "prepack": "unset URL",
-    "prepublish": "unset URL"
+    "prepack": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc",
+    "prepublish": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc"
   },
   "files": [
     "bin"
