@@ -8,7 +8,7 @@
     "shell-ai": "./bin/index.js"
   },
   "scripts": {
-    "dev": "export SUGGEST_URL='http://localhost:3000/api/suggest' AUTH_URL='http://localhost:3000/api/auth' REFRESH_URL='http://localhost:3000/api/refresh' SUBSCRIBE_URL='http://localhost:3000/api/subscribe' && npx tsc && npm install -g . && shell-ai suggest 'write a for loop'",
+    "dev": "export CUSTOMER_PORTAL='https://billing.stripe.com/p/login/test_dR63fI3o7b7d39S7ss' SIGNUP_URL='http://localhost:3000/api/signup' SUGGEST_URL='http://localhost:3000/api/suggest' AUTH_URL='http://localhost:3000/api/auth' REFRESH_URL='http://localhost:3000/api/refresh' SUBSCRIBE_URL='http://localhost:3000/api/subscribe' && npx tsc && npm install -g . && shell-ai signup",
     "lint": "npx eslint --format json --output-file result.json",
     "prepack": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc",
     "prepublish": "unset SUGGEST_URL AUTH_URL REFRESH_URL SUBSCRIBE_URL && npx tsc"
@@ -31,9 +31,11 @@
   "dependencies": {
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
+    "cli-spinners": "^2.7.0",
     "clipboardy": "^3.0.0",
     "commander": "^9.4.0",
     "jwt-decode": "^3.1.2",
+    "log-update": "^5.0.1",
     "moment": "^2.29.4",
     "node-fetch": "^3.2.10",
     "open": "^8.4.0",

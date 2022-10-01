@@ -1,13 +1,18 @@
 import chalk from "chalk";
+import cliSpinners from "cli-spinners";
 import clipboard from "clipboardy";
 import { readFileSync } from "fs";
 import jwt_decode from "jwt-decode";
+import logUpdate from "log-update";
 import moment from "moment";
 import fetch from "node-fetch";
 import { CreateCompletionResponseChoicesInner } from "openai";
 import { handleRefreshAuth } from "./auth.js";
 
 const jwt = jwt_decode.default;
+
+const { frames, interval } = cliSpinners.dots;
+let i = 0;
 
 const generateRainbowText = () => {
   const rainbowText = [
@@ -41,6 +46,13 @@ const copyToClipboard = (choice: CreateCompletionResponseChoicesInner) => {
 
 const run = async (options: any, access_token: string, prompt: string) => {
   try {
+    const loaderInterval = setInterval(() => {
+      logUpdate(
+        frames[(i = ++i % frames.length)] +
+          chalk.bold.magenta(" Working on a suggestion for you...")
+      );
+    }, interval);
+
     const result = await fetch(
       process.env.SUGGEST_URL ??
         ("https://shell-ai-api.vercel.app/api/suggest" as string),
@@ -53,6 +65,8 @@ const run = async (options: any, access_token: string, prompt: string) => {
         body: JSON.stringify({ prompt }),
       }
     );
+
+    clearInterval(loaderInterval);
 
     if (result.status === 401 || result.status === 403) {
       console.log(
@@ -84,6 +98,7 @@ const run = async (options: any, access_token: string, prompt: string) => {
     }
   } catch (error) {
     console.log(chalk.bold.redBright("\nSomething went wrong 🫣\n"));
+    throw error;
   }
 };
 
@@ -104,7 +119,7 @@ export const handleCompletion = async (prompt: string, options: any) => {
 
       if (!decoded.permissions.includes("shell:premium")) {
         throw new Error(
-          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe"
+          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe. If you have already done this, make sure to run shell-ai login again to refresh your account"
         );
       }
 
@@ -112,7 +127,7 @@ export const handleCompletion = async (prompt: string, options: any) => {
     } else {
       if (!decoded.permissions.includes("shell:premium")) {
         throw new Error(
-          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe"
+          "It looks like you don't have an active subscription 🤯 - You can get one by running shell-ai subscribe. If you have already done this, make sure to run shell-ai login again to refresh your account"
         );
       }
 
@@ -120,5 +135,6 @@ export const handleCompletion = async (prompt: string, options: any) => {
     }
   } catch (error: any) {
     console.log(chalk.bold.redBright(error.message));
+    throw error;
   }
 };
