@@ -22,6 +22,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       password,
       connection: "Username-Password-Authentication",
       verify_email: false,
+      email_verified: true,
     });
 
     res.status(200).json({ message: "User created" });
