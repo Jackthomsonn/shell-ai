@@ -189,6 +189,6 @@ export const signup = async () => {
     );
   } catch (error) {
     clearInterval(loaderInterval);
-    console.log(chalk.bold.redBright("\nSignup failed 🫣\n"));
+    throw new Error("Signup failed 🫣");
   }
 };

@@ -17,6 +17,7 @@ const openai = new OpenAIApi(configuration);
 
 const moderate = async (prompt: string) => {
   console.log("Moderating prompt...", { prompt });
+
   const result = await axios("https://api.openai.com/v1/moderations", {
     method: "POST",
     headers: {

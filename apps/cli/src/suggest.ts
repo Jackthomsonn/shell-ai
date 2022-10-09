@@ -68,6 +68,24 @@ const run = async (options: any, access_token: string, prompt: string) => {
 
     clearInterval(loaderInterval);
 
+    if (result.status === 429) {
+      console.log(
+        chalk.bold.redBright(
+          "You have made too many requests. Please try again in a bit"
+        )
+      );
+      return;
+    }
+
+    if (result.status === 400) {
+      console.log(
+        chalk.bold.redBright(
+          "Your request was malformed. Please check your prompt and try again"
+        )
+      );
+      return;
+    }
+
     if (result.status === 401 || result.status === 403) {
       console.log(
         chalk.bold.redBright(
@@ -96,9 +114,8 @@ const run = async (options: any, access_token: string, prompt: string) => {
         }
       });
     }
-  } catch (error) {
-    console.log(chalk.bold.redBright("\nSomething went wrong 🫣\n"));
-    throw error;
+  } catch (error: any) {
+    throw new Error(error);
   }
 };
 
@@ -134,6 +151,6 @@ export const handleCompletion = async (prompt: string, options: any) => {
       await run(options, access_token, prompt);
     }
   } catch (error: any) {
-    console.log(chalk.bold.redBright(error.message));
+    throw new Error(error);
   }
 };
