@@ -2,6 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import jwt from "jwt-decode";
 import lambda from "lambda-rate-limiter";
+import axios from "axios";
 
 const configuration = new Configuration({
   organization: process.env.ORG_ID,
@@ -14,9 +15,33 @@ const { check } = lambda({
 
 const openai = new OpenAIApi(configuration);
 
+const moderate = async (prompt: string) => {
+  console.log("Moderating prompt...", { prompt });
+  const result = await axios("https://api.openai.com/v1/moderations", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.PUBLIC_KEY}`,
+    },
+    data: {
+      input: prompt,
+    },
+  });
+
+  return await result.data.results[0].flagged;
+};
+
 export default async (req: VercelRequest, res: VercelResponse) => {
   const prompt = req.body.prompt;
   const token = req.headers.authorization as string;
+
+  const isFlagged = await moderate(prompt);
+
+  if (isFlagged) {
+    return res
+      .status(400)
+      .json({ error: "Your prompt contains a flagged word" });
+  }
 
   try {
     console.log("check", { token });

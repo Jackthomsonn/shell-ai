@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "auth0": "^2.42.0",
+    "axios": "^1.1.2",
     "jwt-decode": "^3.1.2",
     "lambda-rate-limiter": "^3.0.1",
     "openai": "^3.0.0",
