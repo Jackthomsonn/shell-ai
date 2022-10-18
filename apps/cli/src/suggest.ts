@@ -102,7 +102,7 @@ const run = async (options: any, access_token: string, prompt: string) => {
       choices.forEach((choice: CreateCompletionResponseChoicesInner) => {
         if (choice && choice.text) {
           console.log(
-            `\n${generateRainbowText()} 🎉`,
+            `\n${generateRainbowText()} (Note: Output is AI-generated and may contain inaccuracies) 🎉`,
             `\n${chalk.bold.greenBright("--------------------")}\n\n`,
             chalk.bold.whiteBright(choice.text.trim()),
             `\n\n${chalk.bold.greenBright("--------------------")}\n`
