@@ -115,7 +115,7 @@ const run = async (options: any, access_token: string, prompt: string) => {
       });
     }
   } catch (error: any) {
-    throw new Error(error);
+    console.log(chalk.bold.redBright(error.message));
   }
 };
 
@@ -151,6 +151,6 @@ export const handleCompletion = async (prompt: string, options: any) => {
       await run(options, access_token, prompt);
     }
   } catch (error: any) {
-    throw new Error(error);
+    console.log(chalk.bold.redBright(error.message));
   }
 };
