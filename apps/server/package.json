@@ -4,6 +4,7 @@
   "description": "Shell AI API is the backend for Shell AI",
   "main": "index.js",
   "scripts": {
+    "dev": "echo 'No dev script'",
     "get-env": "vercel env pull",
     "lint": "npx eslint --format json --output-file result.json"
   },
