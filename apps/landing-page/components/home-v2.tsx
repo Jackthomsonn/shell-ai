@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 
 export function HomeV2() {
   const [api, setApi] = useState<CarouselApi>();
-  const [background, setBackground] = useState<string>("bg-red-50");
-  const [foreground, setForeground] = useState<string>("text-slate-900 subpixel-antialiased");
+  const [background, setBackground] = useState<string>("bg-indigo-50");
+  const [foreground, setForeground] = useState<string>("text-indigo-900 subpixel-antialiased");
 
   const colours = {
-    0: "bg-red-50",
+    0: "bg-indigo-50",
     1: "bg-slate-200",
   }
 
@@ -23,18 +23,18 @@ export function HomeV2() {
     api.on("select", (a, b) => {
       const selected = a.selectedScrollSnap();
       setBackground(colours[selected as keyof typeof colours]);
-      setForeground(selected === 0 ? "text-slate-900 subpixel-antialiased" : "text-slate-900 subpixel-antialiased");
+      setForeground(selected === 0 ? "text-indigo-900" : "text-slate-900");
     })
   }, [api])
 
   return (
     <div className="flex min-h-screen md:max-h-screen bg-slate-900">
-      <div className="m-2 flex flex-col md:flex-row gap-2">
+      <div className="m-2 md:m-8 flex flex-col md:flex-row gap-2">
         <section className="flex justify-center items-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-xl">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-4">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-white subpixel-antialiased">
+                <h1 className={`text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-white subpixel-antialiased`}>
                   Shell AI
                 </h1>
                 <p className="mx-auto max-w-[700px] text-white md:text-xl subpixel-antialiased">
@@ -79,27 +79,22 @@ export function HomeV2() {
             <ArrowRightIcon />
 
           </h3>
-          <Carousel className="py-12" setApi={setApi}>
+          <Carousel className="py-12 container" setApi={setApi}>
             <CarouselContent>
               <CarouselItem>
                 <div className="px-4 md:px-6">
                   <div className="grid items-center gap-6 justify-center">
-                    <img
-                      alt="Image"
-                      className="aspect-video overflow-hidden rounded-xl object-cover object-center lg:order-last w-full max-w-[600px]"
-                      src="/placeholder.jpg"
-                    />
                     <div className="flex flex-col justify-center space-y-4">
                       <div className="space-y-4">
-                        <div className="inline-block rounded-lg px-3 py-1 text-sm bg-green-200 font-bold text-slate-900 subpixel-antialiased">Introduction</div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-slate-900 subpixel-antialiased">Power at Your Fingertips</h2>
-                        <p className="max-w-[600px] text-slate-900 subpixel-antialiased md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        <div className={`inline-block rounded-lg px-3 py-1 text-sm bg-green-200 font-bold ${foreground} subpixel-antialiased`}>Introduction</div>
+                        <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl ${foreground} subpixel-antialiased`}>Power at Your Fingertips</h2>
+                        <p className={`max-w-[600px] ${foreground} subpixel-antialiased md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed`}>
                           Shell AI revolutionizes your terminal experience by bringing the power of artificial intelligence directly to your command line interface. With Shell AI, you have a virtual assistant at your fingertips, ready to assist with tasks, provide information, and streamline your workflow — all without leaving your terminal window.
                         </p>
                       </div>
                       <div className="flex flex-col gap-2">
                         <Link
-                          className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                          className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-indigo-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-950 disabled:pointer-events-none disabled:opacity-50"
                           href="#"
                         >
                           Contact Sales
@@ -121,8 +116,8 @@ export function HomeV2() {
                     <div className="flex flex-col justify-center space-y-4">
                       <div className="space-y-4">
                         <div className="inline-block rounded-lg px-3 py-1 text-sm bg-green-200 font-bold text-green-900 subpixel-antialiased">How to use</div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-slate-800">Lets get started</h2>
-                        <p className="max-w-[600px] text-slate-800 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl ${foreground}`}>Lets get started</h2>
+                        <p className={`max-w-[600px] ${foreground} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed`}>
                           Experience the convenience of having an intelligent assistant right in your terminal. With Shell AI, unleash the potential of your command line interface and accomplish tasks more efficiently than ever before.
                         </p>
                         <div className="space-y-6">
@@ -152,12 +147,9 @@ export function HomeV2() {
               </CarouselItem>
             </CarouselContent>
           </Carousel>
-
-
         </section>
-
-        <Toaster />
       </div>
+      <Toaster duration={2_000} />
     </div >
   )
 }
