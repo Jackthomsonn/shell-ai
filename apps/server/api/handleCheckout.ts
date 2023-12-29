@@ -10,7 +10,7 @@ const auth0 = new ManagementClient({
 });
 
 const stripe = new Stripe(process.env.STRIPE_KEY as string, {
-  apiVersion: "2022-08-01",
+  apiVersion: "2023-10-16"
 });
 
 const roles = ["rol_RHllXYZi72sktKTy"]; // Shell premium role
