@@ -108,7 +108,7 @@ export const handleRefreshAuth = async (refresh_token: string) => {
 };
 
 export const subscribe = async () => {
-  const { access_token } = JSON.parse(
+  const { access_token, refresh_token } = JSON.parse(
     readFileSync(`${process.env.HOME}/.shellai`, "ascii")
   );
 
@@ -136,11 +136,11 @@ export const subscribe = async () => {
 
   console.log(
     chalk.bold.magentaBright(
-      "\nTaking you to the subscription page now. Once you have completed the subscription, make sure to run shell-ai login again to get your new access token 🥳\n"
+      "\nTaking you to the subscription page now. Once you have completed the subscription, make sure to run shell-ai refresh again to get your new access token 🥳\n"
     )
   );
 
-  open(response.data.paymentLinkUrl);
+  await open(response.data.paymentLinkUrl);
 };
 
 export const signup = async () => {

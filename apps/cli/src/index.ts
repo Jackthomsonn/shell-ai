@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import chalk from "chalk";
 import { Command } from "commander";
-import fs from "fs";
+import fs, { readFileSync } from "fs";
 import open from "open";
-import { handleLogin, signup, subscribe } from "./auth.js";
+import { handleLogin, handleRefreshAuth, signup, subscribe } from "./auth.js";
 import { handleCompletion } from "./suggest.js";
 
 (async () => {
@@ -14,7 +14,7 @@ import { handleCompletion } from "./suggest.js";
     .description(
       "Shell AI is a command line interface to help suggest ways to solve all your problems"
     )
-    .version("1.2.10");
+    .version("1.2.11");
 
   program
     .command("suggest")
@@ -40,6 +40,21 @@ import { handleCompletion } from "./suggest.js";
         console.log(chalk.bold.redBright(error.message));
       }
     });
+
+  program
+    .command("refresh")
+    .description("Refresh your login token")
+    .action(async () => {
+      try {
+        const { refresh_token } = JSON.parse(
+          readFileSync(`${process.env.HOME}/.shellai`, "ascii")
+        );
+        await handleRefreshAuth(refresh_token)
+      } catch (error: any) {
+        console.log(chalk.bold.redBright(error.message));
+      }
+    });
+
   program
     .command("subscribe")
     .description("Subscribe to Shell AI")
