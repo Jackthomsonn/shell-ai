@@ -95,15 +95,16 @@ export function HomeV2() {
                       <div className="flex flex-col gap-2">
                         <Link
                           className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-indigo-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-950 disabled:pointer-events-none disabled:opacity-50"
-                          href="#"
+                          href="https://www.npmjs.com/package/shell-ai"
+                          target="_blank"
                         >
-                          Contact Sales
+                          View NPM Package
                         </Link>
                         <Link
                           className={`${foreground} inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50`}
-                          href="#"
+                          href="mailto:hello@jackthomson.co.uk"
                         >
-                          Tour the Platform
+                          Contact me
                         </Link>
                       </div>
                     </div>
