@@ -15,9 +15,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         quantity: 1,
       },
     ],
-    subscription_data: {
-      trial_period_days: 7,
-    },
     metadata: {
       user: user_id,
     },
