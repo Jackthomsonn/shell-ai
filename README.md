@@ -1,21 +1,18 @@
 # Shell AI
 
-Shell AI helps you solve code problems right in your terminal! Simply ask Shell AI a question, and they will suggest an answer for you!
-&nbsp;&nbsp;
-&nbsp;&nbsp;
+Your Personal Command Line Assistant. Shell AI revolutionizes your terminal experience by bringing the power of artificial intelligence directly to your command line interface. With Shell AI, you have a virtual assistant at your fingertips, ready to assist with tasks, provide information, and streamline your workflow — all without leaving your terminal window.
 
-&nbsp;&nbsp;
-
-<p align="center" width="100%">
-  <img src="https://user-images.githubusercontent.com/11717131/193361157-a092f6d5-793c-42bf-b750-3fffea0bd704.png" data-canonical-src="https://user-images.githubusercontent.com/11717131/193361157-a092f6d5-793c-42bf-b750-3fffea0bd704.png" width="200"  />
+<p align="center" width="10%">
+  <img width="200" src="https://github.com/Jackthomsonn/shell-ai/assets/11717131/3cc9a364-9411-4aca-9c2e-ebbab1c8e624" />
 </p>
 
 ## Get started with Shell AI
 
 ```bash
 npm i shell-ai -g
-shell-ai login // You must login first (if you dont have an account, run shell-ai signup)
-shell-ai subscribe // Subscribe to a plan
-shell-ai login // Login again to refresh your scopes or wait for 1 minute
+shell-ai signup
+shell-ai login
+shell-ai subscribe
+shell-ai refresh
 shell-ai suggest "How do I run a docker image and mount a volume"
 ```
