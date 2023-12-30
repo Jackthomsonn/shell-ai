@@ -20,16 +20,16 @@ export function HomeV2() {
   useEffect(() => {
     if (!api) return
 
-    api.on("select", (a, b) => {
+    api.on("select", a => {
       const selected = a.selectedScrollSnap();
       setBackground(colours[selected as keyof typeof colours]);
-      setForeground(selected === 0 ? "text-indigo-900" : "text-slate-900");
+      setForeground(selected === 0 ? "text-indigo-900" : "text-indigo-900");
     })
   }, [api])
 
   return (
     <div className="flex min-h-screen md:max-h-screen bg-slate-900">
-      <div className="m-2 md:m-8 flex flex-col md:flex-row gap-2">
+      <div className="flex flex-col md:flex-row gap-2 m-2">
         <section className="flex justify-center items-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-xl">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
@@ -79,7 +79,7 @@ export function HomeV2() {
             <ArrowRightIcon />
 
           </h3>
-          <Carousel className="py-12 container" setApi={setApi}>
+          <Carousel className="py-12" setApi={setApi}>
             <CarouselContent>
               <CarouselItem>
                 <div className="px-4 md:px-6">
@@ -100,7 +100,7 @@ export function HomeV2() {
                           Contact Sales
                         </Link>
                         <Link
-                          className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                          className={`${foreground} inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50`}
                           href="#"
                         >
                           Tour the Platform
@@ -125,19 +125,19 @@ export function HomeV2() {
                             <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               1
                             </Badge>
-                            <h3 className="font-semibold text-md text-slate-800 ml-2">Step 1: npx shell-ai login</h3>
+                            <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 1: npx shell-ai login</h3>
                           </div>
                           <div className="flex items-center gap-2">
                             <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               2
                             </Badge>
-                            <h3 className="font-semibold text-md text-slate-800 ml-2">Step 2: npx shell-ai subscribe</h3>
+                            <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 2: npx shell-ai subscribe</h3>
                           </div>
                           <div className="flex items-center gap-2">
                             <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               3
                             </Badge>
-                            <h3 className="font-semibold text-md text-slate-800 ml-2">Step 3: npx shell-ai suggest</h3>
+                            <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 3: npx shell-ai suggest</h3>
                           </div>
                         </div>
                       </div>
