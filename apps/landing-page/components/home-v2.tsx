@@ -86,7 +86,7 @@ export function HomeV2() {
                   <div className="grid items-center gap-6 justify-center">
                     <div className="flex flex-col justify-center space-y-4">
                       <div className="space-y-4">
-                        <div className={`inline-block rounded-lg px-3 py-1 text-sm bg-green-200 font-bold ${foreground} subpixel-antialiased`}>Introduction</div>
+                        <div className={`inline-block rounded-lg px-3 py-1 text-sm bg-green-200 font-bold text-green-900 subpixel-antialiased`}>Introduction</div>
                         <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl ${foreground} subpixel-antialiased`}>Power at Your Fingertips</h2>
                         <p className={`max-w-[600px] ${foreground} subpixel-antialiased md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed`}>
                           Shell AI revolutionizes your terminal experience by bringing the power of artificial intelligence directly to your command line interface. With Shell AI, you have a virtual assistant at your fingertips, ready to assist with tasks, provide information, and streamline your workflow — all without leaving your terminal window.
@@ -123,19 +123,19 @@ export function HomeV2() {
                         </p>
                         <div className="space-y-6">
                           <div className="flex items-center gap-2">
-                            <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
+                            <Badge className="text-md font-semibold hover:bg-green-200 bg-green-200 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               1
                             </Badge>
                             <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 1: npx shell-ai login</h3>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
+                            <Badge className="text-md font-semibold hover:bg-green-200 bg-green-200 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               2
                             </Badge>
                             <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 2: npx shell-ai subscribe</h3>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Badge className="text-md font-semibold hover:bg-green-500 bg-green-500 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
+                            <Badge className="text-md font-semibold hover:bg-green-200 bg-green-200 text-green-900 h-6 w-6 flex items-center justify-center rounded-full">
                               3
                             </Badge>
                             <h3 className={`font-semibold text-md ${foreground} ml-2`}>Step 3: npx shell-ai suggest</h3>
